@@ -1,4 +1,5 @@
 package com.cm6123.wormhole.app;
+import com.cm6123.wormhole.board.BoardCreation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,10 @@ public final class Application {
 
         logger.info("Application Started with args:{}", String.join(",", args));
 
-        System.out.println("Hello World.  Welcome to Wormhole.");
+            System.out.println("Hello World.  Welcome to Wormhole.");
 
         logger.info("Application closing");
     }
 
-
 }
+
