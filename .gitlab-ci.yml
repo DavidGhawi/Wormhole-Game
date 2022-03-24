@@ -2,8 +2,8 @@ image: openjdk:11-jdk
 
 default:
   tags:
-    - comsc-ci
-    #- general-docker
+    #- comsc-ci
+    - general-docker
 
 
 stages:
@@ -45,7 +45,7 @@ build:gradle:
       - ./build/jacocoHtml
       - ./build/libs/*.jar
       - ./build/libs/*.log
-      - ./build/reports/pitest
+#      - ./build/reports/pitest
     expire_in: 4 week
 
 
@@ -58,7 +58,7 @@ pages:
     - pwd
     - mv ./build/reports/tests/ public
     - mv ./build/reports/checkstyle/ public
-    - mv ./build/reports/pitest/ public
+  #  - mv ./build/reports/pitest/ public
     - mv ./build/jacocoHtml/ public
     - mv ./build/libs/*.jar public
     - pwd
