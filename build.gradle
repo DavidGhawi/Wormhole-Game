@@ -107,7 +107,7 @@ pitest {
     junit5PluginVersion = '0.15'
 }
 
-check.dependsOn("pitest") //comment this line out if your build fails with the 'CoverageMinion' error.
+//check.dependsOn("pitest") //comment this line out if your build fails with the 'CoverageMinion' error.
 
 
 rootProject.tasks.named("jar") {

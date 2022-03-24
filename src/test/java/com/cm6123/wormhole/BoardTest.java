@@ -2,7 +2,6 @@ package com.cm6123.wormhole;
 
 import com.cm6123.wormhole.board.*;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
@@ -28,13 +27,6 @@ class BoardTest {
     }
 
     @Test
-    public void shouldAddNegativeEntrance () {
-        BoardCreation b = new BoardCreation(5);
-        b.createNegativeWormhole(6,5);
-        assertTrue(b.getNegativeWormholes().contains(6));
-    }
-
-    @Test
     public void shouldAddNegativeExit () {
         BoardCreation b = new BoardCreation(5);
         b.createNegativeWormhole(6, 5);
@@ -42,25 +34,9 @@ class BoardTest {
     }
 
     @Test
-    public void shouldCreatePositiveWormhole (){
-        BoardCreation b = new BoardCreation(5);
-        b.createPositive();
-        assertTrue(b.getPositiveWormholes().get(0)< b.getExits().get(0));
-    }
-
-    @Test
-    public void shouldCreateNegativeWormhole (){
-        BoardCreation b = new BoardCreation(5);
-        b.createNegative();
-        assertTrue(b.getNegativeWormholes().get(0)> b.getExits().get(0));
-    }
-
-    @Test
     public void shouldCreate5Wormholes (){
         BoardCreation b = new BoardCreation(5);
-        b.setNumberWormholes();
-        b.createWormholes();
-        assertEquals(5, b.getExits().size());
+        assertEquals(5, b.getPositiveWormholes().size() + b.getNegativeWormholes().size());
     }
 
     @Test
@@ -68,5 +44,15 @@ class BoardTest {
         BoardCreation b = new BoardCreation(5);
         b.createPositiveWormhole(5,6);
         assertTrue(b.checkWormholes(5));
+    }
+
+    @Test
+    public void shouldNotGenerate1or25Negative () {
+        for (int i = 0; i<=50; i++) {
+            BoardCreation b = new BoardCreation(5);
+            assertFalse(b.getNegativeWormholes().contains(1) || b.getNegativeWormholes().contains(25));
+            assertFalse(b.getPositiveWormholes().contains(1) || b.getPositiveWormholes().contains(25));
+            assertFalse(b.getExits().contains(1) || b.getExits().contains(25));
+        }
     }
 }
